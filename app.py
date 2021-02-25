@@ -10,7 +10,7 @@ import re
 from collections import Counter
 import plotly.express as px
 from plotly import graph_objects as go
-from RB_dbFunctions import view_exists, get_dataframe_from_db
+from CK_dbFunctions import view_exists, get_dataframe_from_db
 
 app = Flask(__name__)  
 
@@ -55,7 +55,7 @@ def map():
 
 @app.route("/api/lookup/<query>")
 def get_title(query):
-    if query == '':
+    if query == '': 
         query = "nothing"
     df = lookup(query)
     _json = df.to_json(orient='records', default_handler=str) 
@@ -84,4 +84,18 @@ if __name__ == "__main__":
     app.secret_key = os.urandom(24)
     app.run(debug=True)
 
+
+
+  ______                                  __            __    __                                                  
+ /      \                                |  \          |  \  /  \                                                 
+|  $$$$$$\  ______   __    __   ______  _| $$_         | $$ /  $$ ______    ______    ______    ______    ______  
+| $$   \$$ /      \ |  \  |  \ /      \|   $$ \        | $$/  $$ /      \  /      \  /      \  /      \  /      \ 
+| $$      |  $$$$$$\| $$  | $$|  $$$$$$\\$$$$$$        | $$  $$ |  $$$$$$\|  $$$$$$\|  $$$$$$\|  $$$$$$\|  $$$$$$\
+| $$   __ | $$   \$$| $$  | $$| $$  | $$ | $$ __       | $$$$$\ | $$    $$| $$    $$| $$  | $$| $$    $$| $$   \$$
+| $$__/  \| $$      | $$__/ $$| $$__/ $$ | $$|  \      | $$ \$$\| $$$$$$$$| $$$$$$$$| $$__/ $$| $$$$$$$$| $$      
+ \$$    $$| $$       \$$    $$| $$    $$  \$$  $$      | $$  \$$\\$$     \ \$$     \| $$    $$ \$$     \| $$      
+  \$$$$$$  \$$       _\$$$$$$$| $$$$$$$    \$$$$        \$$   \$$ \$$$$$$$  \$$$$$$$| $$$$$$$   \$$$$$$$ \$$      
+                    |  \__| $$| $$                                                  | $$                          
+                     \$$    $$| $$                                                  | $$                          
+                      \$$$$$$  \$$                                                   \$$                          
 
